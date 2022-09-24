@@ -24,7 +24,7 @@ const Home = (): React.ReactElement => {
           className={styles.card}
           onClick={(): void => {
             if (!newJoinCode) {
-              setNewJoinCode(nanoid(4));
+              setNewJoinCode(nanoid(5));
             }
           }}
         >
