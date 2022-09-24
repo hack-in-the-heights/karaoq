@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import * as React from 'react';
 
-import Sing from '../../../components/Sing';
-import styles from '../../../styles/Sing.module.css';
+import Host from '../../../components/Host';
+import styles from '../../../styles/Host.module.css';
 
 const HostPage: NextPage = (): React.ReactElement => {
   return (
@@ -14,7 +14,7 @@ const HostPage: NextPage = (): React.ReactElement => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Sing />
+      <Host />
     </div>
   );
 };
