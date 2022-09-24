@@ -1,31 +1,28 @@
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.title {
+  width: 90%;
+  text-align: right;
 }
 
-.title a:hover,
-.title a:focus,
-.title a:active {
+.title span{
+  border: thin solid black;
+  padding: 10px;
+  font-size: xxx-large;
+}
+
+.title a{
   text-decoration: underline;
 }
 
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
+.video {
+  height: 90vh;
+  width: 90%;
 }
