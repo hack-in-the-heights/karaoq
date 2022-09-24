@@ -5,7 +5,7 @@ import * as React from 'react';
 import Sing from '../../../components/Sing';
 import styles from '../../../styles/Sing.module.css';
 
-const SingPage: NextPage = (): React.ReactElement => {
+const HostPage: NextPage = (): React.ReactElement => {
   return (
     <div className={styles.container}>
       <Head>
@@ -19,4 +19,4 @@ const SingPage: NextPage = (): React.ReactElement => {
   );
 };
 
-export default SingPage;
+export default HostPage;
