@@ -74,6 +74,7 @@
 }
 
 .card {
+  background: black;
   margin: 1rem;
   padding: 1.5rem;
   text-align: left;
@@ -88,8 +89,8 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: #ff006e;
+  border-color: #ff006e;
 }
 
 .card h2 {
