@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid';
+import Link from 'next/link';
 import * as React from 'react';
 
 import styles from '../styles/Home.module.css';
@@ -5,7 +7,10 @@ import styles from '../styles/Home.module.css';
 const Home = (): React.ReactElement => {
   const [displayJoinCodeInput, setDisplayJoinCodeInput] =
     React.useState<boolean>(false);
-  console.log({ displayJoinCodeInput });
+
+  const [joinCode, setJoinCode] = React.useState<string | null>(null);
+  const [newJoinCode, setNewJoinCode] = React.useState<string | null>(null);
+
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Welcome to KaraoQ</h1>
@@ -15,16 +20,33 @@ const Home = (): React.ReactElement => {
       </p>
 
       <div className={styles.grid}>
-        {/* FIXME: Make links dynamic */}
-        <button className={styles.card}>
+        <div
+          className={styles.card}
+          onClick={(): void => {
+            if (!newJoinCode) {
+              setNewJoinCode(nanoid(4));
+            }
+          }}
+        >
           <h2>Host &rarr;</h2>
           <p>Create a karaoke queue that other people can join.</p>
-        </button>
 
-        <button
+          {newJoinCode && (
+            <div className={styles.inputContainer}>
+              Your game code is: <h3>{newJoinCode}</h3>
+              <Link href={`/host/${newJoinCode}`}>
+                <button>
+                  <a>Start Hosting</a>
+                </button>
+              </Link>
+            </div>
+          )}
+        </div>
+
+        <div
           className={styles.card}
-          onClick={(e): void => {
-            setDisplayJoinCodeInput(!displayJoinCodeInput);
+          onClick={(): void => {
+            setDisplayJoinCodeInput(true);
           }}
         >
           <h2>Play &rarr;</h2>
@@ -35,13 +57,22 @@ const Home = (): React.ReactElement => {
               <label>Enter join code: </label>
               <input
                 id="enterJoinCode"
+                onChange={(e): void => {
+                  setJoinCode(e.target.value);
+                }}
                 name="enterJoinCode"
                 required
                 type="text"
               />
+
+              <Link href={`/sing/${joinCode}`}>
+                <button>
+                  <a>Start Singing</a>
+                </button>
+              </Link>
             </div>
           )}
-        </button>
+        </div>
       </div>
     </main>
   );
