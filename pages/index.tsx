@@ -5,14 +5,6 @@ import useRoomQueue from '../app/queue/useRoomQueue';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
-  const roomQueue = useRoomQueue({
-    roomId: 'fake-room-id',
-    pusherConfig: {
-      cluster: process.env.PUSHER_CLUSTER!,
-      key: process.env.PUSHER_KEY!,
-    },
-  });
-
   return (
     <div className={styles.container}>
       <Head>
