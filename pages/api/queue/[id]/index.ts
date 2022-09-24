@@ -1,21 +1,11 @@
 import { MongoClient } from 'mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { QueueEntry } from '../../../app/queue/types';
-
-interface Error {
-  code: number;
-  message: string;
-}
-
-interface Room {
-  id: string;
-  queue: QueueEntry[];
-  queuePos: number;
-}
+import { QueueEntry } from '../../../../app/queue/types';
+import { ApiError, Room } from '../../types';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Room | Error>
+  res: NextApiResponse<Room | ApiError>
 ) {
   const id = req.query.id;
   const client = new MongoClient(process.env.MONGODB_URI!);
