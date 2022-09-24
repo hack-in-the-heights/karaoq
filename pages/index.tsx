@@ -1,9 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import * as React from 'react';
+
+import Home from '../components/Home';
 import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+const HomePage: NextPage = (): React.ReactElement => {
   return (
     <div className={styles.container}>
       <Head>
@@ -12,25 +15,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to KaraoQ</h1>
-
-        <p className={styles.description}>
-          Your one stop shop for Youtube Karaoke!
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Host &rarr;</h2>
-            <p>Create a karaoke queue that other people can join.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Play &rarr;</h2>
-            <p>Join a pre-existing queue that someone else set up.</p>
-          </a>
-        </div>
-      </main>
+      <Home />
 
       <footer className={styles.footer}>
         Powered by Brew House, La Puente
@@ -42,4 +27,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default HomePage;
