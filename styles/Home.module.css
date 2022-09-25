@@ -1,6 +1,6 @@
 .container {
   background: #01FCFE;
-  color: white;
+  color: #7F32EC;
   font-family: 'Kanit', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding: 0 2rem;
 }
@@ -10,7 +10,8 @@
 }
 
 .button {
-  background: black;
+  background: #7F32EC;
+  color: #B2F50C;
 }
 
 .main {

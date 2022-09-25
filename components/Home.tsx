@@ -13,7 +13,7 @@ const Home = (): React.ReactElement => {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>Welcome to KaraoQ</h1>
+      <h1 className={styles.title}>KaraoQ</h1>
 
       <p className={styles.description}>
         Your one stop shop for Youtube Karaoke!
