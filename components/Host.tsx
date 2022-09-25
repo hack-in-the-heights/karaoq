@@ -10,7 +10,7 @@ const Host = (): React.ReactElement => {
     <main className={styles.main}>
       <h1 className={styles.title}>
         TO JOIN: Go to{' '}
-        <a href={'http://www.karoq.vercel.app'}>www.karoq.vercel.app</a> and
+        <a href={'https://karaoq.vercel.app'}>karaoq.vercel.app</a> and
         type in code <span className={styles.span}>{room_code}</span>
       </h1>
       <iframe
