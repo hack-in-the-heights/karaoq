@@ -38,7 +38,7 @@ export default async function handler(
 
   } catch (e) {
     console.log(e);
-    res.status(500).json({ code: 500, message: 'Internal search error.' });
+    res.status(500).json({ code: 500, message: 'Internal server error.' });
 
   } finally {
     client.close();
