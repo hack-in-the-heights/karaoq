@@ -56,9 +56,10 @@
 }
 
 .title {
-  margin: 0;
-  line-height: 1.15;
+  font-family: 'Gugi';
   font-size: 4rem;
+  line-height: 1.15;
+  margin: 0;
 }
 
 .title,
