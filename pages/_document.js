@@ -8,6 +8,7 @@ export default function Document() {
           rel="stylesheet"
           href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
         />
+        <link rel="icon" href="/microphone.ico" />
       </Head>
       <body>
         <Main />
