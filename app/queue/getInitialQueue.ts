@@ -1,4 +1,4 @@
-import { QueueEntry } from './types';
+import { QueueEntry } from "../../pages/api/types";
 
 export default async function getInitialQueue(
   roomId: string
