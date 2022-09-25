@@ -11,10 +11,6 @@ const SingPage: NextPage = (): React.ReactElement => {
       <Head>
         <title>KaraoQ</title>
         <meta name="description" content="Karaoke Youtube" />
-        <link
-          rel="stylesheet"
-          href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
