@@ -1,6 +1,7 @@
 .container {
-  background: black;
+  background: #01FCFE;
   color: white;
+  font-family: 'Kanit', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding: 0 2rem;
 }
 
