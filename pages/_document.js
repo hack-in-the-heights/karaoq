@@ -8,6 +8,10 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Kanit&display=optional"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Faster+One&display=optional"
+          rel="stylesheet"
+        />
       </Head>
       <body>
         <Main />

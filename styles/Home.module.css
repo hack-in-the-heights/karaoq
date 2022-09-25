@@ -40,6 +40,10 @@
   flex-grow: 1;
 }
 
+.buttonText {
+  font-family: 'Faster One', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
 .title a {
   color: #0070f3;
   text-decoration: none;
