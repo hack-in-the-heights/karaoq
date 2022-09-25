@@ -9,10 +9,11 @@ export default async function handler(
   if (req.method == "POST") {
     const client = new MongoClient(process.env.MONGODB_URI!);
     const roomId = req.query.id;
-    const activeVideoIndex = req.query.activeVideoIndex;
+    const activeVideoIndex = parseInt(req.query.activeVideoIndex as string);
 
     if (typeof roomId !== "string" || typeof activeVideoIndex !== "number") {
       res.status(400).json({ code: 400, message: "Invalid request." });
+      console.log(typeof activeVideoIndex);
       return;
     }
 
@@ -28,7 +29,7 @@ export default async function handler(
       } else {
         await collection.updateOne(
           { id: roomId },
-          { $push: { activeVideoIndex: activeVideoIndex } }
+          { $set: { activeVideoIndex: activeVideoIndex } }
         );
       }
       res
