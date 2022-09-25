@@ -34,4 +34,9 @@
   width: 50%;
   display: flex;
   align-items: center;
+  justify-content: space-around;
+}
+
+.song img {
+  padding-right: 5px
 }

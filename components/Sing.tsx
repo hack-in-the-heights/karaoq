@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import styles from '../styles/Sing.module.css';
 import { useState } from 'react';
-import useAsyncEffect from 'use-async-effect';
 
 interface YoutubeResult {
   title: string,
@@ -58,7 +57,7 @@ const Sing = (): React.ReactElement => {
       <h1>Songs</h1>
       <input type="text" placeholder="Search YouTube for a song" onChange={handleChange} value={query}/>
       <button onClick={search}>Search</button>
-      {songs.map((song => <div className={styles.song}> <img src={song.thumbnailUrl}/>{song.title} <button> Add </button></div>))}
+      {songs.map((song => <div key={song.thumbnailUrl} className={styles.song}> <img src={song.thumbnailUrl}/>{song.title} <button> Add </button></div>))}
       <h3>Queue:</h3>
       <div className={styles.queue}>
 
