@@ -56,7 +56,7 @@
 }
 
 .title {
-  font-family: 'Gugi';
+  font-family: 'Gugi', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 4rem;
   line-height: 1.15;
   margin: 0;
