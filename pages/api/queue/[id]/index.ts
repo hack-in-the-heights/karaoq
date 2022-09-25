@@ -14,8 +14,6 @@ export default async function handler(
     return
   }
 
-  const data = {id: roomId, queue: [], activeVideoIndex: 0};
-  
   try {
     const db = client.db(process.env.MONGODB_DB);
     const collection = db.collection<Room>('rooms');
@@ -23,12 +21,11 @@ export default async function handler(
     await client.connect();
 
     if (req.method == 'POST') {
-      const result = await collection.insertOne(data)
-      res.status(203).json({ code: 203, message: 'Data inserted successfully.' })
-      console.log(result);
+      await collection.insertOne({id: roomId, queue: [], activeVideoIndex: 0});
+      res.status(203).json({ code: 203, message: 'Data inserted successfully.' });
       
     } else if (req.method == 'GET') {
-      const room = await collection.findOne({roomId});
+      const room = await collection.findOne({id: roomId});
       if (room) {        
         res.status(200).json(room);
       } else {
