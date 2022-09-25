@@ -2,6 +2,9 @@ import * as React from 'react';
 
 import styles from '../styles/Sing.module.css';
 import { useState } from 'react';
+import getInitialQueue from "../app/queue/getInitialQueue.ts";
+
+import {useRouter} from 'next/router';
 
 interface YoutubeResult {
   title: string,
@@ -38,6 +41,10 @@ async function searchYoutube(query: string): Promise<YoutubeResult[]> {
 const Sing = (): React.ReactElement => {
   const [songs, setSongs] = useState<YoutubeResult[]>([])
   const [query, setQuery] = useState('');
+  const [queue, setQueue] = useState([]);
+
+  const router = useRouter();
+  const joinCode = "asdf"//router.query.joinCode;
 
   function handleChange(e: any) {
     setQuery(e.target.value);
@@ -52,6 +59,10 @@ const Sing = (): React.ReactElement => {
       }
   }
 
+  React.useEffect(()=>{
+    getInitialQueue(joinCode).then((res)=> setQueue(res));
+  })
+
   return (
     <main className={styles.main}>
       <h1>Songs</h1>
@@ -60,7 +71,7 @@ const Sing = (): React.ReactElement => {
       {songs.map((song => <div key={song.thumbnailUrl} className={styles.song}> <img src={song.thumbnailUrl}/>{song.title} <button> Add </button></div>))}
       <h3>Queue:</h3>
       <div className={styles.queue}>
-
+        {queue.map(item => <div key={item.id} className={styles.queueItem}>{item.userName}</div>)}
       </div>
     </main>
   );

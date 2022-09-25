@@ -37,6 +37,18 @@
   justify-content: space-around;
 }
 
+
 .song img {
   padding-right: 5px
+}
+
+.queue {
+  width: 100%;
+}
+
+.queueItem {
+  border: thin solid black;
+  width: 100%;
+  margin-top: 2px;
+  padding-left: 10px;
 }
