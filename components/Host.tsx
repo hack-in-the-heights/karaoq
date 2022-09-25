@@ -4,8 +4,7 @@ import styles from '../styles/Host.module.css';
 
 import {useRouter} from 'next/router';
 
-const video_id = "-PnwATAyJJU"
-const room_code = "TVXQ"
+const video_id = "bNOncnlm7Ho"
 
 const Host = (): React.ReactElement => {
   const router = useRouter();
