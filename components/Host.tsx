@@ -11,7 +11,7 @@ const Host = (): React.ReactElement => {
   const joinCode = router.query.joinCode;
   return (
     <main className={styles.main}>
-       <h1 className={styles.title}>TO JOIN: Go to <a href={"http://karoq.vercel.app"}>karoq.vercel.app</a> and type in code <span className={styles.span}>{joinCode}</span></h1>
+       <h1 className={styles.title}>TO JOIN: Go to <a href={"http://karaoq.vercel.app"}>karaoq.vercel.app</a> and type in code <span className={styles.span}>{joinCode}</span></h1>
        <iframe className={styles.video}
         src={"https://www.youtube.com/embed/" + video_id}
         ></iframe>

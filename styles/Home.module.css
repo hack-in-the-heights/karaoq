@@ -1,6 +1,7 @@
 .container {
-  background: black;
-  color: white;
+  background: #01FCFE;
+  color: #7F32EC;
+  font-family: 'Kanit', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding: 0 2rem;
 }
 
@@ -9,7 +10,8 @@
 }
 
 .button {
-  background: black;
+  background: #7F32EC;
+  color: #B2F50C;
 }
 
 .main {
@@ -38,6 +40,10 @@
   flex-grow: 1;
 }
 
+.buttonText {
+  font-family: 'Faster One', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
 .title a {
   color: #0070f3;
   text-decoration: none;
@@ -50,9 +56,10 @@
 }
 
 .title {
-  margin: 0;
-  line-height: 1.15;
+  font-family: 'Gugi', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 4rem;
+  line-height: 1.15;
+  margin: 0;
 }
 
 .title,
@@ -84,7 +91,7 @@
 }
 
 .card {
-  background: black;
+  background: #B2F50C;
   border: 1px solid #eaeaea;
   border-radius: 10px;
   color: inherit;

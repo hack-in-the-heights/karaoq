@@ -13,7 +13,7 @@ const Home = (): React.ReactElement => {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>Welcome to KaraoQ</h1>
+      <h1 className={styles.title}>KaraoQ</h1>
 
       <p className={styles.description}>
         Your one stop shop for Youtube Karaoke!
@@ -28,7 +28,7 @@ const Home = (): React.ReactElement => {
             }
           }}
         >
-          <h2>Host &rarr;</h2>
+          <h2 className={styles.buttonText}>Host &rarr;</h2>
           <p>Create a karaoke queue that other people can join.</p>
 
           {newJoinCode && (
@@ -49,7 +49,7 @@ const Home = (): React.ReactElement => {
             setDisplayJoinCodeInput(true);
           }}
         >
-          <h2>Play &rarr;</h2>
+          <h2 className={styles.buttonText}>Play &rarr;</h2>
           <p>Join a pre-existing queue that someone else set up.</p>
 
           {displayJoinCodeInput && (

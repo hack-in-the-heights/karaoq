@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 import useAsyncEffect from 'use-async-effect/types';
+import { QueueEntry } from '../../pages/api/types';
 import getInitialQueue from './getInitialQueue';
 import listen from './listen';
-import { QueueEntry } from './types';
 
 interface Args {
   roomId: string;
