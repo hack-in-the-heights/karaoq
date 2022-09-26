@@ -26,8 +26,8 @@
 }
 
 .mic {
-height: 10rem;
-width: 10rem;
+height: 12rem;
+width: 12rem;
 position: relative;
 border-radius: 50%;
 z-index: 2;
@@ -38,37 +38,47 @@ clip-path: circle(200%); */
 
 .circle1,
 .circle2,
-.circle3 {
+.circle3,
+.circle4 {
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
-  box-shadow: inset -5px -5px 15px 5px rgba(0,0,0,0.2),
+  box-shadow: inset -5px -5px 15px 10px rgba(0,0,0,0.22),
   black .5rem .5rem .5rem;
 }
 
 .circle1 {
   width: 18rem;
   height: 18rem;
-  background: linear-gradient(to top left, #B2F50C, magenta, #7F32EC);
+  background: linear-gradient(to top left, #B2F50C, #FF8A0B, #FF1F80, #7F32EC);
   position: absolute;
   top: 5rem; 
   right: 1.5rem;
 }
 
 .circle2 {
-  background: linear-gradient(to bottom right, magenta, #7F32EC, blue);
+  background: linear-gradient(to bottom right, #B2F50C, #FF1F80, #7F32EC, blue);
   position: absolute;
-  top: 4rem;
+  top: 8rem;
   left: -1rem;
 }
 
 .circle3 {
   width: 12rem;
   height: 12rem;
-  background: linear-gradient(to top right, whitesmoke, #B2F50C, teal);
+  background: linear-gradient(to top right, #f7b635, #B2F50C, teal);
   position: absolute;
   top: -1rem;
   right: -.75rem;
+}
+
+.circle4 {
+  width: 15rem;
+  height: 15rem;
+  background: linear-gradient(to top right, teal, #B2F50C, #f7b635, #FF1F80);
+  position: absolute;
+  top: -3rem;
+  left: 1rem;
 }
 
 .footer {
@@ -89,6 +99,7 @@ clip-path: circle(200%); */
 
 .buttonText {
   font-family: 'Faster One', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 .title:hover,

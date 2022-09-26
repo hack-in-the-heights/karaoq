@@ -18,6 +18,7 @@ const Home = (): React.ReactElement => {
       <div className={styles.circle1}></div>
       <div className={styles.circle2}></div>
       <div className={styles.circle3}></div>
+      <div className={styles.circle4}></div>
       <p className={styles.description}>
         Your one stop shop for Youtube Karaoke!
       </p>
