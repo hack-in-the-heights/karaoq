@@ -12,5 +12,6 @@ export interface Room {
 export interface QueueEntry {
   id: string;
   userName: string;
-  youtubeUrl: string;
+  songTitle: string;
+  videoId: string;
 }

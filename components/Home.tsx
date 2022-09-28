@@ -14,7 +14,11 @@ const Home = (): React.ReactElement => {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>KaraoQ</h1>
-
+      <img src='/mic.png' className={styles.mic}></img>
+      <div className={styles.circle1}></div>
+      <div className={styles.circle2}></div>
+      <div className={styles.circle3}></div>
+      <div className={styles.circle4}></div>
       <p className={styles.description}>
         Your one stop shop for Youtube Karaoke!
       </p>
