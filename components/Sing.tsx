@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import styles from '../styles/Sing.module.css';
 import { useState } from 'react';
-import getInitialQueue from "../app/queue/getInitialQueue.ts";
+import getInitialQueue from "../app/queue/getInitialQueue";
 
 import {useRouter} from 'next/router';
 
