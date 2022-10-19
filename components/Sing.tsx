@@ -60,7 +60,7 @@ const Sing = (): React.ReactElement => {
   }
 
   React.useEffect(()=>{
-    getInitialQueue(joinCode).then((res: any)=> setQueue(res));
+    getInitialQueue(joinCode).then((res: any)=> {setQueue(res); console.log(queue);});
   })
 
   return (
@@ -71,7 +71,7 @@ const Sing = (): React.ReactElement => {
       {songs.map((song => <div key={song.thumbnailUrl} className={styles.song}> <img src={song.thumbnailUrl}/>{song.title} <button> Add </button></div>))}
       <h3>Queue:</h3>
       <div className={styles.queue}>
-        {queue.map((item: any) => <div key={item.id} className={styles.queueItem}>{item.userName}</div>)}
+        {queue.length > 0 ? queue.map((item: any) => <div key={item.id} className={styles.queueItem}>{item.userName + "---" + item.songTitle}</div>) : <div className={styles.queueItem} >No songs in queue</div>}
       </div>
     </main>
   );
