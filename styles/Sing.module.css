@@ -30,19 +30,32 @@
   text-align: center;
 }
 
+.songList {
+  justify-content: center;
+  width: 90%;
+}
+
 .song {
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+
+  border-bottom: solid thin;
+}
+
+.song div, .song img, .song button {
+  padding:  5px;
+  margin:  5px;
 }
 
 
 .song img {
-  padding-right: 5px
+  width: 20vw;
+  height: 15vw;
 }
 
-.queue {
+.queue{
   width: 100%;
 }
 
