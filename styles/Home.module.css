@@ -1,8 +1,9 @@
 .container {
-  background: #01FCFE;
+  background-color: #01FCFE;
   color: #7F32EC;
   font-family: 'Kanit', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding: 0 2rem;
+  z-index: -2;
 }
 
 .inputContainer {
@@ -24,6 +25,62 @@
   align-items: center;
 }
 
+.mic {
+height: 12rem;
+width: 12rem;
+position: relative;
+border-radius: 50%;
+z-index: 2;
+/* background: radial-gradient(rgba(0, 0, 0, 0.1) -2px, transparent);
+backdrop-filter: blur(20px);
+clip-path: circle(200%); */
+}
+
+.circle1,
+.circle2,
+.circle3,
+.circle4 {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  box-shadow: inset -5px -5px 15px 10px rgba(0,0,0,0.22),
+  black .5rem .5rem .5rem;
+}
+
+.circle1 {
+  width: 18rem;
+  height: 18rem;
+  background: linear-gradient(to top left, #B2F50C, #FF8A0B, #FF1F80, #7F32EC);
+  position: absolute;
+  top: 5rem; 
+  right: 1.5rem;
+}
+
+.circle2 {
+  background: linear-gradient(to bottom right, #B2F50C, #FF1F80, #7F32EC, blue);
+  position: absolute;
+  top: 8rem;
+  left: -1rem;
+}
+
+.circle3 {
+  width: 12rem;
+  height: 12rem;
+  background: linear-gradient(to top right, #f7b635, #B2F50C, teal);
+  position: absolute;
+  top: -1rem;
+  right: -.75rem;
+}
+
+.circle4 {
+  width: 15rem;
+  height: 15rem;
+  background: linear-gradient(to top right, teal, #B2F50C, #f7b635, #FF1F80);
+  position: absolute;
+  top: -3rem;
+  left: 1rem;
+}
+
 .footer {
   display: flex;
   flex: 1;
@@ -41,18 +98,14 @@
 }
 
 .buttonText {
-  font-family: 'Faster One', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: 'Faster One', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
-.title a {
-  color: #0070f3;
+.title:hover,
+.title:focus,
+.title:active {
   text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
 }
 
 .title {
@@ -60,17 +113,22 @@
   font-size: 4rem;
   line-height: 1.15;
   margin: 0;
+  text-shadow: black 2px 2px 3px;
 }
 
 .title,
 .description {
   text-align: center;
+  z-index: 10;
 }
 
 .description {
-  margin: 4rem 0;
+  color: whitesmoke;
+  margin-top: -2rem;
   line-height: 1.5;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  text-shadow:black 1px 1px 1px,
+  rgb(28, 15, 15) 2px 2px 1px;
 }
 
 .code {
@@ -95,6 +153,8 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   color: inherit;
+  box-shadow: black 8px 8px;
+  border: solid, black 1px;
   cursor: pointer;
   margin: 1rem;
   max-width: 300px;
@@ -107,13 +167,19 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #ff006e;
-  border-color: #ff006e;
+  background: #7F32EC;
+  color: #B2F50C;
+  border-color: #B2F50C;
+  text-shadow: black 1px 1px 1px;
+  transform: translate(1%, 5%);
+  transition: transform 0.6s ease-in;
+  transition: transform 0.3s ease-out;
+  animation: MoveUpDown 1s linear infinite;
 }
 
 .card h2 {
   margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .card p {

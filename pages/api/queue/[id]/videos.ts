@@ -11,14 +11,15 @@ export default async function handler(
     const roomId = req.query.id;
     const entryId = req.query.entryId;
     const userName = req.query.userName;
-    const youtubeUrl = req.query.youtubeUrl;
+    const videoId = req.query.videoId;
+    const songTitle = req.query.songTitle;
 
     if (
       typeof entryId !== "string" ||
       typeof userName !== "string" ||
-      typeof youtubeUrl !== "string"
+      typeof videoId !== "string" ||
+      typeof songTitle !== "string"
     ) {
-      console.log(req.query);
       res.status(400).json({ code: 400, message: "Invalid request." });
       return;
     }
@@ -40,7 +41,8 @@ export default async function handler(
               queue: {
                 id: entryId,
                 userName: userName,
-                youtubeUrl: youtubeUrl,
+                videoId: videoId,
+                songTitle: songTitle,
               },
             },
           }

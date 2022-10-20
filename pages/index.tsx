@@ -12,7 +12,6 @@ const HomePage: NextPage = (): React.ReactElement => {
       <Head>
         <title>KaraoQ</title>
         <meta name="description" content="Karaoke Youtube" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Home />
