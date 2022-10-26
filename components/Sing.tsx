@@ -44,7 +44,7 @@ const Sing = (): React.ReactElement => {
   const [queue, setQueue] = useState([]);
 
   const router = useRouter();
-  const joinCode = "asdf"//router.query.joinCode;
+  const joinCode = "asdf";
 
   function handleChange(e: any) {
     setQuery(e.target.value);
