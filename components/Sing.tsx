@@ -2,6 +2,9 @@ import * as React from 'react';
 
 import styles from '../styles/Sing.module.css';
 import { useState } from 'react';
+import getInitialQueue from "../app/queue/getInitialQueue";
+
+import {useRouter} from 'next/router';
 
 interface YoutubeResult {
   title: string,
@@ -38,6 +41,10 @@ async function searchYoutube(query: string): Promise<YoutubeResult[]> {
 const Sing = (): React.ReactElement => {
   const [songs, setSongs] = useState<YoutubeResult[]>([])
   const [query, setQuery] = useState('');
+  const [queue, setQueue] = useState([]);
+
+  const router = useRouter();
+  const joinCode = "asdf"//router.query.joinCode;
 
   function handleChange(e: any) {
     setQuery(e.target.value);
@@ -52,15 +59,21 @@ const Sing = (): React.ReactElement => {
       }
   }
 
+  React.useEffect(()=>{
+    getInitialQueue(joinCode).then((res: any)=> {setQueue(res); console.log(queue);});
+  }, [])
+
   return (
     <main className={styles.main}>
       <h1>Songs</h1>
       <input type="text" placeholder="Search YouTube. (Tip: Add 'karaoke' after the song name)" onChange={handleChange} value={query}/>
       <button onClick={search}>Search</button>
+      <div className={styles.songList}>
       {songs.map((song => <div key={song.thumbnailUrl} className={styles.song}> <img src={song.thumbnailUrl}/>{song.title} <button> Add </button></div>))}
+      </div>
       <h3>Queue:</h3>
       <div className={styles.queue}>
-
+        {queue.length > 0 ? queue.map((item: any) => <div key={item.id} className={styles.queueItem}>{item.userName + "---" + item.songTitle}</div>) : <div className={styles.queueItem} >No songs in queue</div>}
       </div>
     </main>
   );
