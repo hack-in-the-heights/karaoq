@@ -65,3 +65,26 @@
   margin-top: 2px;
   padding-left: 10px;
 }
+
+.add{
+  position: absolute;
+  background: #ffffffcc;
+  height: 105vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  place-content:  center;
+}
+
+.add .addItems {
+  background: #000000cc;
+  color:  white;
+
+  text-align: center;
+  padding-bottom: 2vh;
+}
+
+.add button {
+  height: 5vh;
+}
