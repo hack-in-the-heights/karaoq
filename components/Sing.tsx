@@ -32,7 +32,6 @@ async function searchYoutube(query: string): Promise<YoutubeResult[]> {
 
   const nextRawResp = await fetch("https://www.googleapis.com/youtube/v3/videos?" + nextParams);
   const nextResp = await nextRawResp.json();
-  console.log(nextResp.items);
   return nextResp.items?.map((item: any) => ({
     title: item.snippet.title,
     thumbnailUrl: item.snippet.thumbnails?.default.url,
@@ -44,6 +43,7 @@ const Sing = (): React.ReactElement => {
   const [songs, setSongs] = useState<YoutubeResult[]>([])
   const [query, setQuery] = useState('');
   const [queue, setQueue] = useState([]);
+  const [username, setUsername] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
   const [chosenSong, setChosenSong] = useState<YoutubeResult>({
       title: "",
@@ -54,8 +54,18 @@ const Sing = (): React.ReactElement => {
   const router = useRouter();
   const joinCode = "asdf";
 
-  function handleChange(e: any) {
+  function handleQueryChange(e: any) {
     setQuery(e.target.value);
+  }
+
+  function handleUsernameChange(e: any) {
+    setUsername(e.target.value);
+    const addButton: any = document.getElementById("add");
+    if (username.length > 0){
+      if (addButton) addButton.disabled = false;
+    } else {
+       if (addButton) addButton.disabled = true;
+    }
   }
 
   async function search() {
@@ -80,18 +90,17 @@ const Sing = (): React.ReactElement => {
           <img src={chosenSong.thumbnailUrl}></img>
           <p>(ID: {chosenSong.videoId})</p>
           <p>to the queue.</p>
-          <label htmlFor="username">Please type your name</label>
-          <input type="text" name="username"></input>
-        </div>
-        <button>Add</button>
-        <button onClick={()=> setShowAddModal(false)}>Close</button>
+          <label htmlFor="username">Please type your name:</label>
+          <input onChange={handleUsernameChange} type="text" name="username"></input>
+          <button id="add" onClick={addSong} disabled >Add</button>
+          <button onClick={()=> setShowAddModal(false)}>Close</button>
+         </div>
       </div>
     )
   }
 
-  function addSong(song: YoutubeResult){
-    setChosenSong(song);
-    setShowAddModal(true);
+  function addSong(){
+    console.log("username: " + username + " songTitle: " + chosenSong.title + " videoId: " + chosenSong.videoId)
 
   }
 
@@ -99,10 +108,11 @@ const Sing = (): React.ReactElement => {
     <main className={styles.main}>
       <h1>Songs</h1>
       {showAddModal ? renderAddModal() : null}
-      <input type="text" placeholder="Search YouTube. (Tip: Add 'karaoke' after the song name)" onChange={handleChange} value={query}/>
+      <input type="text" placeholder="Search YouTube. (Tip: Add 'karaoke' after the song name)" onChange={handleQueryChange} value={query}/>
       <button onClick={search}>Search</button>
       <div className={styles.songList}>
-      {songs.map((song => <div key={song.thumbnailUrl} className={styles.song}> <img src={song.thumbnailUrl}/>{song.title} <button onClick={()=>{addSong(song)}}> Add </button></div>))}
+      {songs.map((song => <div key={song.thumbnailUrl} className={styles.song}> <img src={song.thumbnailUrl}/>{song.title} <button onClick={()=>{setChosenSong(song);
+        setShowAddModal(true);}}> Add </button></div>))}
       </div>
       <h3>Queue:</h3>
       <div className={styles.queue}>

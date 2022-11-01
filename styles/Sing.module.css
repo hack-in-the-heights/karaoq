@@ -74,17 +74,22 @@
 
   display: flex;
   flex-direction: column;
-  place-content:  center;
+  align-items:  center;
+  justify-content: flex-start;
 }
 
 .add .addItems {
   background: #000000cc;
   color:  white;
+  width: 100%;
 
   text-align: center;
   padding-bottom: 2vh;
+  margin-top: 5vh;
 }
 
 .add button {
   height: 5vh;
+  width: 90%;
+  margin-top: 1.5vh;
 }
