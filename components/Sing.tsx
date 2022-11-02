@@ -61,10 +61,10 @@ const Sing = (): React.ReactElement => {
   function handleUsernameChange(e: any) {
     setUsername(e.target.value);
     const addButton: any = document.getElementById("add");
-    if (username.length > 0){
-      if (addButton) addButton.disabled = false;
+    if (username.length > 0 && addButton){
+      //addButton.disabled = true;
     } else {
-       if (addButton) addButton.disabled = true;
+      //addButton.disabled = false;
     }
   }
 
@@ -92,7 +92,7 @@ const Sing = (): React.ReactElement => {
           <p>to the queue.</p>
           <label htmlFor="username">Please type your name:</label>
           <input onChange={handleUsernameChange} type="text" name="username"></input>
-          <button id="add" onClick={addSong} disabled >Add</button>
+          <button id="add" onClick={addSong} disabled = {username.length > 0 ? false : true}>Add</button>
           <button onClick={()=> setShowAddModal(false)}>Close</button>
          </div>
       </div>
