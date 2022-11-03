@@ -2,9 +2,11 @@ import * as React from 'react';
 
 import styles from '../styles/Sing.module.css';
 import { useState } from 'react';
-import getInitialQueue from "../app/queue/getInitialQueue";
+import getInitialQueue from '../app/queue/getInitialQueue';
+import postEntryToQueue from '../app/queue/postEntryToQueue';
 
 import {useRouter} from 'next/router';
+import { QueueEntry } from '../pages/api/types';
 
 interface YoutubeResult {
   title: string,
@@ -42,7 +44,7 @@ async function searchYoutube(query: string): Promise<YoutubeResult[]> {
 const Sing = (): React.ReactElement => {
   const [songs, setSongs] = useState<YoutubeResult[]>([])
   const [query, setQuery] = useState('');
-  const [queue, setQueue] = useState([]);
+  const [queue, setQueue] = useState<QueueEntry[]>([]);
   const [username, setUsername] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
   const [chosenSong, setChosenSong] = useState<YoutubeResult>({
@@ -52,7 +54,7 @@ const Sing = (): React.ReactElement => {
   })
 
   const router = useRouter();
-  const joinCode = "asdf";
+  const joinCode: any = router.query.joinCode;
 
   function handleQueryChange(e: any) {
     setQuery(e.target.value);
@@ -60,12 +62,14 @@ const Sing = (): React.ReactElement => {
 
   function handleUsernameChange(e: any) {
     setUsername(e.target.value);
-    const addButton: any = document.getElementById("add");
-    if (username.length > 0 && addButton){
-      //addButton.disabled = true;
-    } else {
-      //addButton.disabled = false;
-    }
+  }
+
+  function getNextAvailableIdString(){
+    const currentIdString = queue[queue.length-1].id;
+    
+    let newIdString = String(Number(currentIdString) + 1)
+    if (newIdString === "NaN") newIdString = "1";
+    return newIdString;
   }
 
   async function search() {
@@ -91,7 +95,7 @@ const Sing = (): React.ReactElement => {
           <p>(ID: {chosenSong.videoId})</p>
           <p>to the queue.</p>
           <label htmlFor="username">Please type your name:</label>
-          <input onChange={handleUsernameChange} type="text" name="username"></input>
+          <input onChange={handleUsernameChange} type="text" name="username" placeholder={username}></input>
           <button id="add" onClick={addSong} disabled = {username.length > 0 ? false : true}>Add</button>
           <button onClick={()=> setShowAddModal(false)}>Close</button>
          </div>
@@ -100,10 +104,18 @@ const Sing = (): React.ReactElement => {
   }
 
   function addSong(){
-    console.log("username: " + username + " songTitle: " + chosenSong.title + " videoId: " + chosenSong.videoId)
-
+    const song: QueueEntry = {
+      id: getNextAvailableIdString(),
+      userName: username,
+      songTitle: chosenSong.title,
+      videoId: chosenSong.videoId,
+    }
+    postEntryToQueue(joinCode, song);
+    setQueue([...queue, song])
+    setShowAddModal(false);
+    setSongs([]);
   }
-
+ 
   return (
     <main className={styles.main}>
       <h1>Songs</h1>
