@@ -5,8 +5,11 @@ import { useState } from 'react';
 import getInitialQueue from '../app/queue/getInitialQueue';
 import postEntryToQueue from '../app/queue/postEntryToQueue';
 
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import { QueueEntry } from '../pages/api/types';
+
+import { v4 as uuidv4 } from 'uuid';
+
 
 interface YoutubeResult {
   title: string,
@@ -64,14 +67,6 @@ const Sing = (): React.ReactElement => {
     setUsername(e.target.value);
   }
 
-  function getNextAvailableIdString(){
-    const currentIdString = queue[queue.length-1].id;
-    
-    let newIdString = String(Number(currentIdString) + 1)
-    if (newIdString === "NaN") newIdString = "1";
-    return newIdString;
-  }
-
   async function search() {
       if (query) {
         const songs = await searchYoutube(query);
@@ -105,7 +100,7 @@ const Sing = (): React.ReactElement => {
 
   function addSong(){
     const song: QueueEntry = {
-      id: getNextAvailableIdString(),
+      id: uuidv4(),
       userName: username,
       songTitle: chosenSong.title,
       videoId: chosenSong.videoId,

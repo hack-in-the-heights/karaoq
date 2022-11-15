@@ -15,12 +15,14 @@
     "pusher-js": "^7.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "use-async-effect": "^2.2.7"
+    "use-async-effect": "^2.2.7",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "18.7.18",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
+    "@types/uuid": "^8.3.4",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.1",
     "typescript": "4.8.3"

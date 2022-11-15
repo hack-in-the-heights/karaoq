@@ -10,7 +10,7 @@ export default async function postEntryToQueue(
         songTitle: entry.songTitle
   });
 
-  const resp = await fetch(`/api/queue/${roomId}/videos?` + params, {
+  const resp = await fetch(`/api/queue/${roomId}/videos?${params}`, {
     method: "POST"
   });
 
