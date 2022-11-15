@@ -2,13 +2,19 @@ import * as React from 'react';
 
 import styles from '../styles/Sing.module.css';
 import { useState } from 'react';
-import getInitialQueue from "../app/queue/getInitialQueue";
+import getInitialQueue from '../app/queue/getInitialQueue';
+import postEntryToQueue from '../app/queue/postEntryToQueue';
 
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
+import { QueueEntry } from '../pages/api/types';
+
+import { v4 as uuidv4 } from 'uuid';
+
 
 interface YoutubeResult {
   title: string,
-  thumbnailUrl: string
+  thumbnailUrl: string,
+  videoId: string
 }
 
 async function searchYoutube(query: string): Promise<YoutubeResult[]> {
@@ -31,23 +37,34 @@ async function searchYoutube(query: string): Promise<YoutubeResult[]> {
 
   const nextRawResp = await fetch("https://www.googleapis.com/youtube/v3/videos?" + nextParams);
   const nextResp = await nextRawResp.json();
-
   return nextResp.items?.map((item: any) => ({
     title: item.snippet.title,
-    thumbnailUrl: item.snippet.thumbnails?.default.url
+    thumbnailUrl: item.snippet.thumbnails?.default.url,
+    videoId: item.id
   })) ?? [];
 }
 
 const Sing = (): React.ReactElement => {
   const [songs, setSongs] = useState<YoutubeResult[]>([])
   const [query, setQuery] = useState('');
-  const [queue, setQueue] = useState([]);
+  const [queue, setQueue] = useState<QueueEntry[]>([]);
+  const [username, setUsername] = useState("");
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [chosenSong, setChosenSong] = useState<YoutubeResult>({
+      title: "",
+      thumbnailUrl: "",
+      videoId: ""
+  })
 
   const router = useRouter();
-  const joinCode = "asdf";
+  const joinCode: any = router.query.joinCode;
 
-  function handleChange(e: any) {
+  function handleQueryChange(e: any) {
     setQuery(e.target.value);
+  }
+
+  function handleUsernameChange(e: any) {
+    setUsername(e.target.value);
   }
 
   async function search() {
@@ -63,13 +80,46 @@ const Sing = (): React.ReactElement => {
     getInitialQueue(joinCode).then((res: any)=> {setQueue(res); console.log(queue);});
   }, [])
 
+  function renderAddModal(){
+    return (
+      <div className={styles.add}>
+        <div className={styles.addItems}>
+          <p>You will be adding:</p>
+          <p>{chosenSong.title}</p>
+          <img src={chosenSong.thumbnailUrl}></img>
+          <p>(ID: {chosenSong.videoId})</p>
+          <p>to the queue.</p>
+          <label htmlFor="username">Please type your name:</label>
+          <input onChange={handleUsernameChange} type="text" name="username" placeholder={username}></input>
+          <button id="add" onClick={addSong} disabled = {username.length > 0 ? false : true}>Add</button>
+          <button onClick={()=> setShowAddModal(false)}>Close</button>
+         </div>
+      </div>
+    )
+  }
+
+  function addSong(){
+    const song: QueueEntry = {
+      id: uuidv4(),
+      userName: username,
+      songTitle: chosenSong.title,
+      videoId: chosenSong.videoId,
+    }
+    postEntryToQueue(joinCode, song);
+    setQueue([...queue, song])
+    setShowAddModal(false);
+    setSongs([]);
+  }
+ 
   return (
     <main className={styles.main}>
       <h1>Songs</h1>
-      <input type="text" placeholder="Search YouTube. (Tip: Add 'karaoke' after the song name)" onChange={handleChange} value={query}/>
+      {showAddModal ? renderAddModal() : null}
+      <input type="text" placeholder="Search YouTube. (Tip: Add 'karaoke' after the song name)" onChange={handleQueryChange} value={query}/>
       <button onClick={search}>Search</button>
       <div className={styles.songList}>
-      {songs.map((song => <div key={song.thumbnailUrl} className={styles.song}> <img src={song.thumbnailUrl}/>{song.title} <button> Add </button></div>))}
+      {songs.map((song => <div key={song.thumbnailUrl} className={styles.song}> <img src={song.thumbnailUrl}/>{song.title} <button onClick={()=>{setChosenSong(song);
+        setShowAddModal(true);}}> Add </button></div>))}
       </div>
       <h3>Queue:</h3>
       <div className={styles.queue}>
