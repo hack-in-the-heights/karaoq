@@ -57,7 +57,7 @@ const Sing = (): React.ReactElement => {
   })
 
   const router = useRouter();
-  const joinCode: any = router.query.joinCode;
+  const joinCode: any = "asdf" //router.query.joinCode;
 
   function handleQueryChange(e: any) {
     setQuery(e.target.value);
@@ -112,7 +112,7 @@ const Sing = (): React.ReactElement => {
   }
  
   return (
-    <main className={styles.main}>
+    <main className={showAddModal ? styles.no_scroll : styles.main}>
       <h1>Songs</h1>
       {showAddModal ? renderAddModal() : null}
       <input type="text" placeholder="Search YouTube. (Tip: Add 'karaoke' after the song name)" onChange={handleQueryChange} value={query}/>
